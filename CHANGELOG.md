@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.5.1] - 2025-09-09
 
 ### Added
--GHOST TAP. https://gamebanana.com/mods/510828
+- GHOST TAP. https://gamebanana.com/mods/510828
 
 
 ## [0.7.5] - 2025-09-07
