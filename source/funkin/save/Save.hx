@@ -122,7 +122,8 @@ class Save implements ConsoleClass
           downscroll: false,
           flashingLights: true,
           zoomCamera: true,
-          debugDisplay: false,
+          debugDisplay: 'Off',
+          debugDisplayBGOpacity: 50,
           hapticsMode: 'All',
           hapticsIntensityMultiplier: 1,
           autoPause: true,
@@ -1606,9 +1607,15 @@ typedef SaveDataOptions =
 
   /**
    * If enabled, an FPS and memory counter will be displayed even if this is not a debug build.
-   * @default `false`
+   * @default `Off`
    */
-  var debugDisplay:Bool;
+  var debugDisplay:String;
+
+  /**
+   * Opacity of the debug display's background.
+   * @default `50`
+   */
+  var debugDisplayBGOpacity:Int;
 
   /**
    * If enabled, haptic feedback will be enabled.

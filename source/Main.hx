@@ -6,13 +6,12 @@ import flixel.FlxState;
 import funkin.ui.FullScreenScaleMode;
 import funkin.Preferences;
 import funkin.util.logging.CrashHandler;
-import funkin.ui.debug.MemoryCounter;
+import funkin.ui.debug.FunkinDebugDisplay;
 import funkin.save.Save;
 import haxe.ui.Toolkit;
 #if hxvlc
 import hxvlc.util.Handle;
 #end
-import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.Lib;
@@ -83,32 +82,17 @@ class Main extends Sprite
     setupGame();
   }
 
-  var video:Video;
-  var netStream:NetStream;
-  var overlay:Sprite;
-
   /**
-   * A frame counter displayed at the top left.
+   * The debug display at the top left.
    */
-  public static var fpsCounter:FPS;
-
-  /**
-   * A RAM counter displayed at the top left.
-   */
-  public static var memoryCounter:MemoryCounter;
+  public static var debugDisplay:FunkinDebugDisplay;
 
   function setupGame():Void
   {
     initHaxeUI();
 
     // addChild gets called by the user settings code.
-    fpsCounter = new FPS(10, 3, 0xFFFFFF);
-
-    #if !html5
-    // addChild gets called by the user settings code.
-    // TODO: disabled on HTML5 (todo: find another method that works?)
-    memoryCounter = new MemoryCounter(10, 13, 0xFFFFFF);
-    #end
+    debugDisplay = new FunkinDebugDisplay(10, 10, 0xFFFFFF);
 
     #if mobile
     // Add this signal so we can reposition and resize the memory and fps counter.
@@ -200,41 +184,23 @@ class Main extends Sprite
     scale = Math.min(scale, 1);
     #end
     final thypos:Float = Math.max(FullScreenScaleMode.notchSize.x, 10);
-    if (fpsCounter != null)
+
+    if (debugDisplay != null)
     {
-      fpsCounter.scaleX = fpsCounter.scaleY = scale;
+      debugDisplay.scaleX = debugDisplay.scaleY = scale;
 
       if (FlxG.game != null)
       {
         if (lerp)
         {
-          fpsCounter.x = flixel.math.FlxMath.lerp(fpsCounter.x, FlxG.game.x + thypos, FlxG.elapsed * 3);
+          debugDisplay.x = flixel.math.FlxMath.lerp(debugDisplay.x, FlxG.game.x + thypos, FlxG.elapsed * 3);
         }
         else
         {
-          fpsCounter.x = FlxG.game.x + FullScreenScaleMode.notchSize.x + 10;
+          debugDisplay.x = FlxG.game.x + FullScreenScaleMode.notchSize.x + 10;
         }
 
-        fpsCounter.y = FlxG.game.y + (3 * scale);
-      }
-    }
-
-    if (memoryCounter != null)
-    {
-      memoryCounter.scaleX = memoryCounter.scaleY = scale;
-
-      if (FlxG.game != null)
-      {
-        if (lerp)
-        {
-          memoryCounter.x = flixel.math.FlxMath.lerp(memoryCounter.x, FlxG.game.x + thypos, FlxG.elapsed * 3);
-        }
-        else
-        {
-          memoryCounter.x = FlxG.game.x + FullScreenScaleMode.notchSize.x + 10;
-        }
-
-        memoryCounter.y = FlxG.game.y + (13 * scale);
+        debugDisplay.y = FlxG.game.y + (3 * scale);
       }
     }
   }
