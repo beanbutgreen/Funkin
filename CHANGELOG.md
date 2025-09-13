@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.5] WEEK 8? - ?
 
-### Added 
-- Funkier Charts from Gamebanana
+### Added
+- Funkier Chart from Gamebanana
+- *WEEK 8*
 
 ### Fixed
 - Fixed FNF logo in README.md
