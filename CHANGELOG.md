@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Fixed
 - Fixed FNF logo in README.md
 
+## [0.7.4.1] - 2025-09-07
+
+### Added
+
+- Endless Mode. https://gamebanana.com/mods/595146
+- Chill Difficulty. https://gamebanana.com/mods/560741
+
+### Changed
+didn't do anything yet
+
 
 ## [0.7.4] - 2025-09-01
 
